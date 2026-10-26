@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* Design tokens sampled from the reference design. */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --color-bg: #08132a;
+  --color-chrome: #0a1631;
+  --color-surface: #0d1a33;
+  --color-surface-2: #0a1530;
+  --color-surface-3: #111f3b;
+  --color-line: #1c2b4b;
+  --color-line-strong: #2a3b60;
+  --color-fg: #e7edf8;
+  --color-fg-muted: #9fb0cf;
+  --color-fg-subtle: #6f82a6;
+
+  --color-primary: #1d6ff2;
+  --color-primary-hover: #2e7cf8;
+  --color-primary-soft: #16305e;
+  --color-path: #2f7ff6;
+  --color-path-local: #4fb3ff;
+
+  --color-ok: #22c55e;
+  --color-ok-fg: #34d17a;
+  --color-ok-soft: #0f3a2b;
+  --color-warn: #f5a524;
+  --color-warn-soft: #3a2c10;
+  --color-err: #ef4444;
+  --color-err-fg: #f87171;
+  --color-err-soft: #3b1418;
+
+  --radius-card: 6px;
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.02) inset, 0 6px 18px rgb(0 0 0 / 0.25);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  button:not(:disabled),
+  [role="tab"] {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  .grid-bg {
+    background-color: #0b1730;
+    background-image:
+      linear-gradient(rgb(70 100 160 / 0.13) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(70 100 160 / 0.13) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #2a3b60 transparent;
+  }
+}
