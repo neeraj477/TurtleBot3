@@ -5,6 +5,8 @@ It connects to the robot stack through [rosbridge_suite](https://github.com/Robo
 
 Built with React 18, TypeScript, Vite 6, Tailwind CSS 4, shadcn/ui-style components (Radix + CVA), Lucide icons and three.js.
 
+**Live demo:** https://turtlebot3-dashboard.vercel.app (opens in Demo Mode, no ROS 2 needed)
+
 ## Two data sources
 
 | | **Demo Mode** (default) | **Live mode** |
@@ -34,6 +36,15 @@ npm run lint       # ESLint
 npm run typecheck  # TypeScript only
 npm test           # Vitest unit tests (rosbridge protocol client, planner, geometry)
 ```
+
+## Deployment
+
+The frontend is a static site deployed on **Vercel**: https://turtlebot3-dashboard.vercel.app
+
+- Vercel detects Vite automatically: build command `npm run build`, output directory `dist`.
+- To deploy manually from this folder: `npx vercel deploy --prod`.
+- There is no backend to host. The only server the dashboard talks to is rosbridge, which runs on the machine running ROS 2.
+- The deployed site is served over HTTPS, so browsers only allow a secure `wss://` rosbridge URL. The exception is `ws://localhost:9090` when the browser runs on the same machine as rosbridge. For a robot on another machine, put rosbridge behind TLS (a reverse proxy or a tunnel).
 
 ## Connect to ROS 2 (Live mode)
 
